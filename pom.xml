@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.spark</groupId>
+    <artifactId>user</artifactId>
+    <version>1.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>user</name>
+
+    <modules>
+        <module>ims-manager-user</module>
+        <module>ims-manager-user-api</module>
+        <module>ims-manager-user-model</module>
+    </modules>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <file.encoding>UTF-8</file.encoding>
+        <maven.compiler.encoding>${file.encoding}</maven.compiler.encoding>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <ims-manager-user.version>1.0.1-SNAPSHOT</ims-manager-user.version>
+        <ims-framework.version>1.0.1-SNAPSHOT</ims-framework.version>
+        <shiro-version>1.2.3</shiro-version>
+    </properties>
+
+    <dependencyManagement>
+
+        <dependencies>
+            <!--自己的framework-->
+            <dependency>
+                <groupId>com.spark</groupId>
+                <artifactId>ims-framework</artifactId>
+                <version>${ims-framework.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.spark</groupId>
+                <artifactId>ims-manager-user</artifactId>
+                <version>${ims-manager-user.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.spark</groupId>
+                <artifactId>ims-manager-user-api</artifactId>
+                <version>${ims-manager-user.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.spark</groupId>
+                <artifactId>ims-manager-user-model</artifactId>
+                <version>${ims-manager-user.version}</version>
+            </dependency>
+
+            <!-- shiro -->
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-core</artifactId>
+                <version>${shiro-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-web</artifactId>
+                <version>${shiro-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-ehcache</artifactId>
+                <version>${shiro-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-spring</artifactId>
+                <version>${shiro-version}</version>
+            </dependency>
+        </dependencies>
+
+    </dependencyManagement>
+
+
+</project>
