@@ -1,9 +1,8 @@
-package com.spark.ims.user.mapper;
+package com.spark.ims.user.repository;
 
 import com.spark.ims.core.repository.BaseJpaRepository;
 import com.spark.ims.user.model.SysUser;
-
-import java.util.List;
+import org.springframework.stereotype.Repository;
 
 /**
  * 描述：
@@ -11,7 +10,8 @@ import java.util.List;
  * @authhor liyuan
  * @data 2018/5/1 21:43
  */
-public interface SysUserMapper extends BaseJpaRepository<SysUser, String> {
+@Repository
+public interface SysUserRepository extends BaseJpaRepository<SysUser, String> {
 
     /**
      * 根据用户名查询用户

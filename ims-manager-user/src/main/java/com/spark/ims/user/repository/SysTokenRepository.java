@@ -1,7 +1,8 @@
-package com.spark.ims.user.mapper;
+package com.spark.ims.user.repository;
 
 import com.spark.ims.core.repository.BaseJpaRepository;
 import com.spark.ims.user.model.SysToken;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -11,7 +12,8 @@ import java.util.List;
  * @authhor liyuan
  * @data 2018/5/1 21:45
  */
-public interface SysTokenMapper extends BaseJpaRepository<SysToken, String> {
+@Repository
+public interface SysTokenRepository extends BaseJpaRepository<SysToken, String> {
 
     /**
      * 根据用户ID查询在线或未正常

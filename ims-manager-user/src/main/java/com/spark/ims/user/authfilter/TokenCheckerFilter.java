@@ -5,7 +5,7 @@ import com.spark.ims.common.domain.ErrorMessage;
 import com.spark.ims.core.domain.UserInfo;
 import com.spark.ims.core.util.I18nUtils;
 import com.spark.ims.user.constants.ErrorCode;
-import com.spark.ims.user.model.StatelessToken;
+import com.spark.ims.user.token.StatelessToken;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.web.filter.AccessControlFilter;
 import org.apache.shiro.web.util.WebUtils;

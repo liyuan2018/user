@@ -1,4 +1,4 @@
-package com.spark.ims.user.model;
+package com.spark.ims.user.token;
 
 import org.apache.shiro.authc.UsernamePasswordToken;
 

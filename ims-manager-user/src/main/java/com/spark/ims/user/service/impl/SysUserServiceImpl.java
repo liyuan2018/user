@@ -1,13 +1,11 @@
 package com.spark.ims.user.service.impl;
 
 import com.spark.ims.core.service.impl.BaseServiceImpl;
-import com.spark.ims.user.mapper.SysUserMapper;
+import com.spark.ims.user.repository.SysUserRepository;
 import com.spark.ims.user.model.SysUser;
 import com.spark.ims.user.service.ISysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
 
 /**
  * 描述：
@@ -20,7 +18,7 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser, String>
         implements ISysUserService {
 
     @Autowired
-    private SysUserMapper sysUserMapper;
+    private SysUserRepository sysUserMapper;
 
     @Override
     public SysUser findByAccount(String account){

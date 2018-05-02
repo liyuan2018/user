@@ -8,7 +8,7 @@ import com.spark.ims.core.domain.UserInfo;
 import com.spark.ims.core.exception.BusinessException;
 import com.spark.ims.user.model.SysToken;
 import com.spark.ims.user.model.SysUser;
-import com.spark.ims.user.model.UserLoginToken;
+import com.spark.ims.user.token.UserLoginToken;
 import com.spark.ims.user.service.ILoginService;
 import com.spark.ims.user.service.ISysTokenService;
 import com.spark.ims.user.service.ISysUserService;

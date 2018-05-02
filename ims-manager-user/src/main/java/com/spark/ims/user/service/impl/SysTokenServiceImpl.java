@@ -1,7 +1,7 @@
 package com.spark.ims.user.service.impl;
 
 import com.spark.ims.core.service.impl.BaseServiceImpl;
-import com.spark.ims.user.mapper.SysTokenMapper;
+import com.spark.ims.user.repository.SysTokenRepository;
 import com.spark.ims.user.model.SysToken;
 import com.spark.ims.user.service.ISysTokenService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ public class SysTokenServiceImpl extends BaseServiceImpl<SysToken, String> imple
 
 
     @Autowired
-    private SysTokenMapper sysTokenMapper;
+    private SysTokenRepository sysTokenMapper;
 
     public SysToken findByToken(String token){
         return  sysTokenMapper.findByToken(token);

@@ -25,6 +25,7 @@
         <ims-manager-user.version>1.0.1-SNAPSHOT</ims-manager-user.version>
         <ims-framework.version>1.0.1-SNAPSHOT</ims-framework.version>
         <shiro-version>1.2.3</shiro-version>
+        <shiro-redis-version.version>2.4.2.1-RELEASE</shiro-redis-version.version>
     </properties>
 
     <dependencyManagement>
@@ -75,6 +76,12 @@
                 <groupId>org.apache.shiro</groupId>
                 <artifactId>shiro-spring</artifactId>
                 <version>${shiro-version}</version>
+            </dependency>
+            <!--shiro-redis dependency start -->
+            <dependency>
+                <groupId>org.crazycake</groupId>
+                <artifactId>shiro-redis</artifactId>
+                <version>${shiro-redis-version}</version>
             </dependency>
         </dependencies>
 

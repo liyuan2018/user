@@ -28,185 +28,190 @@ import java.util.Date;
 @Entity
 @Table(name = "sys_user")
 @Where(clause = "status > '0'")
-public class SysUser extends BaseModel implements IDeleteListenable {
+public class SysUser extends BaseModel {
+    private static final long serialVersionUID = 1L;
 
+    public final static String STATUS_QY="1";
+
+    public final static String STATUS_JY="0";
+
+    public final static Integer TYPE_CYS=2; //车医生，
+    public final static Integer TYPE_CZ=0;//车主
+    public final static Integer TYPE_GLY=1;//管理员
+
+    @Column(name = "user_type", columnDefinition = "Integer")
+    private Integer userType;
+
+    @Column(name = "open_id", columnDefinition = "VARCHAR")
+    private String openId;
+
+    public String getOpenId() {
+        return openId;
+    }
+
+    public void setOpenId(String openId) {
+        this.openId = openId;
+    }
+
+    @Column(name = "name", columnDefinition = "VARCHAR")
+    private String name;
+
+    @Column(name = "frist_name", columnDefinition = "VARCHAR")
+    private String fristName;
+
+    @Column(name = "second_name", columnDefinition = "VARCHAR")
+    private String secondName;
+
+    @Column(name = "account", columnDefinition = "VARCHAR")
+    private String account;
+
+    @Column(name = "password", columnDefinition = "VARCHAR")
+    private String password;
+
+    @Column(name = "office_phone", columnDefinition = "VARCHAR")
+    private String officePhone;
+
+    @Column(name = "home_phone", columnDefinition = "VARCHAR")
+    private String homePhone;
+
+    @Column(name = "mobile", columnDefinition = "VARCHAR")
+    private String mobile;
+
+    @Column(name = "address", columnDefinition = "VARCHAR")
+    private String address;
+
+    @Column(name = "avatar", columnDefinition = "VARCHAR")
+    private String avatar;
+
+    @Column(name = "wechat_no", columnDefinition = "VARCHAR")
+    private String wechatNo;
+
+    @Column(name = "sex", columnDefinition = "VARCHAR")
+    private String sex;
+
+    @Column(name = "email", columnDefinition = "VARCHAR")
+    private String email;
+
+    @Column(name = "error_count", columnDefinition = "VARCHAR")
+    private Integer errorCount;
+
+    @Column(name = "error_time", columnDefinition = "TIMESTAMP")
+    private Date errorTime;
+
+    @Column(name = "modified_time", columnDefinition = "TIMESTAMP")
+    private Date modifiedTime;
+
+    @Column(name = "creator_time", columnDefinition = "TIMESTAMP")
+    private Date creatorTime;
+
+    @Column(name = "status", columnDefinition = "VARCHAR")
+    private String status = STATUS_QY;
+
+    @Column(name = "can_yuyue", columnDefinition = "VARCHAR")
+    private String canYuyue;
+
+    public String getCanYuyue() {
+        return canYuyue;
+    }
+
+    public void setCanYuyue(String canYuyue) {
+        this.canYuyue = canYuyue;
+    }
+
+    @Column(name = "shop_id", columnDefinition = "VARCHAR")
+    private String shopId;
+
+    @Column(name = "work_year", columnDefinition = "Integer")
+    private Integer workYear;
+
+    @Column(name = "description", columnDefinition = "VARCHAR")
+    private String description;
     /**
      *
      */
-    private static final long serialVersionUID = 2681840209772847421L;
+    @Column(name = "type_dby", columnDefinition = "Integer")
+    private Integer typeDby;
 
-    /**
-     * 主机构
-     */
-    @Column
-    //@NotEmpty(message = "所属机构ID不允许为空")
-    @Size(max = 32)
-    private String orgId;
+    @Column(name = "type_xby", columnDefinition = "Integer")
+    private Integer typeXby;
 
-    /**
-     * 主部门
-     */
-    @Column
-    @Size(max = 32)
-    private String deptId;
+    @Column(name = "type_wx", columnDefinition = "Integer")
+    private Integer typeWx;
 
-    /**
-     * 姓名
-     */
-    @Column
-    @NotEmpty(message = "姓名不能为空")
-    @Size(max = 50)
-    private String name;
+    @Column(name = "type_mr", columnDefinition = "Integer")
+    private Integer typeMr;
 
-    /**
-     * 帐号
-     */
-    @Column
-    @NotEmpty(message = "帐号不能为空")
-    @Pattern(regexp = "[^`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]{1,}", message = "帐号只能由中文英文字母、数字、下划线和中划线组成")
-    @Size(max = 50)
-    private String account;
+    @Column(name = "type_jc", columnDefinition = "Integer")
+    private Integer typeJc;
 
-    /**
-     * 微信账号
-     */
-    @Column
-    @Size(max = 50)
-    private String wechatNo;
+    @Column(name = "jf", columnDefinition = "Integer")
+    private Integer jf;
 
-    /**
-     * 密码
-     */
-    @Column
-    //@NotEmpty(message = "密码不能为空")
-    @Size(max = 50, min = 6, message = "密码长度必须大于6位")
-    private String password;
+    @Column(name = "dj", columnDefinition = "Integer")
+    private Integer dj;
 
-    /**
-     * 性别
-     */
-    @Column
-    @Pattern(regexp = "^[1-2]{1}$")
-    private String sex;
-
-    /**
-     * 用户状态
-     */
-    @Column
-    @Pattern(regexp = "^[0-3]{1}$")
-    private String status;
-
-    /**
-     * 邮箱
-     */
-    @Column
-    @Size(max = 50)
-    @Email(message = "请输入正确的邮箱帐号")
-    private String email;
-
-    /**
-     * 地址
-     */
-    @Column
-    @Size(max = 300)
-    private String address;
-
-    /**
-     * 办公室电话
-     */
-    @Column
-    @Size(max = 50)
-    private String officePhone;
-
-    /**
-     * 家庭电话
-     */
-    @Column
-    @Size(max = 50)
-    private String homePhone;
-
-    /**
-     * 手机号码
-     */
-    @Column
-//	@Pattern(regexp = "^[0-9]*$", message = "请输入正确的手机号码")
-    private String mobile;
-
-    /**
-     * 登陆错误次数
-     */
-    @Column
-    private Integer errorCount;
-
-    /**
-     * 修改时间
-     */
-    @Column
-    private Date modified;
-
-    /**
-     * 描述
-     */
-    @Column
-    @Size(max = 300)
-    private String description;
-
-    /**
-     * 最后登陆错误时间
-     */
-    @Column
-    private Date errorTime;
-
-    /**
-     * 头像
-     */
-    @Column
-    @Size(max = 255)
-    private String avatar;
-
-    @Column
-    private String employeeId;
-
-    /**
-     * RTX账号
-     */
-    @Column
-    private String rtxNo;
-
-    @Column
-    private String supplyCompanyId;
-
-    /**
-     * 是否外包人员
-     */
-    @Column
-    private String isOutResourceUser;
-
-    @Transient
-    private String loginConfirm;
-
-    public String getEmployeeId() {
-        return employeeId;
+    public Integer getTypeDby() {
+        return typeDby;
     }
 
-    public void setEmployeeId(String employeeId) {
-        this.employeeId = employeeId;
+    public void setTypeDby(Integer typeDby) {
+        this.typeDby = typeDby;
     }
 
-    public String getOrgId() {
-        return orgId;
+    public Integer getTypeXby() {
+        return typeXby;
     }
 
-    public void setOrgId(String orgId) {
-        this.orgId = orgId;
+    public void setTypeXby(Integer typeXby) {
+        this.typeXby = typeXby;
     }
 
-    public String getDeptId() {
-        return deptId;
+    public Integer getTypeWx() {
+        return typeWx;
     }
 
-    public void setDeptId(String deptId) {
-        this.deptId = deptId;
+    public void setTypeWx(Integer typeWx) {
+        this.typeWx = typeWx;
+    }
+
+    public Integer getTypeMr() {
+        return typeMr;
+    }
+
+    public void setTypeMr(Integer typeMr) {
+        this.typeMr = typeMr;
+    }
+
+    public Integer getTypeJc() {
+        return typeJc;
+    }
+
+    public void setTypeJc(Integer typeJc) {
+        this.typeJc = typeJc;
+    }
+
+    public Integer getJf() {
+        return jf;
+    }
+
+    public void setJf(Integer jf) {
+        this.jf = jf;
+    }
+
+    public Integer getDj() {
+        return dj;
+    }
+
+    public void setDj(Integer dj) {
+        this.dj = dj;
+    }
+
+    public Integer getUserType() {
+        return userType;
+    }
+
+    public void setUserType(Integer userType) {
+        this.userType = userType;
     }
 
     public String getName() {
@@ -214,7 +219,23 @@ public class SysUser extends BaseModel implements IDeleteListenable {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name == null ? null : name.trim();
+    }
+
+    public String getFristName() {
+        return fristName;
+    }
+
+    public void setFristName(String fristName) {
+        this.fristName = fristName == null ? null : fristName.trim();
+    }
+
+    public String getSecondName() {
+        return secondName;
+    }
+
+    public void setSecondName(String secondName) {
+        this.secondName = secondName == null ? null : secondName.trim();
     }
 
     public String getAccount() {
@@ -222,7 +243,7 @@ public class SysUser extends BaseModel implements IDeleteListenable {
     }
 
     public void setAccount(String account) {
-        this.account = account;
+        this.account = account == null ? null : account.trim();
     }
 
     public String getPassword() {
@@ -230,39 +251,7 @@ public class SysUser extends BaseModel implements IDeleteListenable {
     }
 
     public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
+        this.password = password == null ? null : password.trim();
     }
 
     public String getOfficePhone() {
@@ -270,7 +259,7 @@ public class SysUser extends BaseModel implements IDeleteListenable {
     }
 
     public void setOfficePhone(String officePhone) {
-        this.officePhone = officePhone;
+        this.officePhone = officePhone == null ? null : officePhone.trim();
     }
 
     public String getHomePhone() {
@@ -278,7 +267,7 @@ public class SysUser extends BaseModel implements IDeleteListenable {
     }
 
     public void setHomePhone(String homePhone) {
-        this.homePhone = homePhone;
+        this.homePhone = homePhone == null ? null : homePhone.trim();
     }
 
     public String getMobile() {
@@ -286,7 +275,47 @@ public class SysUser extends BaseModel implements IDeleteListenable {
     }
 
     public void setMobile(String mobile) {
-        this.mobile = mobile;
+        this.mobile = mobile == null ? null : mobile.trim();
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address == null ? null : address.trim();
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar == null ? null : avatar.trim();
+    }
+
+    public String getWechatNo() {
+        return wechatNo;
+    }
+
+    public void setWechatNo(String wechatNo) {
+        this.wechatNo = wechatNo == null ? null : wechatNo.trim();
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex == null ? null : sex.trim();
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email == null ? null : email.trim();
     }
 
     public Integer getErrorCount() {
@@ -297,22 +326,6 @@ public class SysUser extends BaseModel implements IDeleteListenable {
         this.errorCount = errorCount;
     }
 
-    public Date getModified() {
-        return modified;
-    }
-
-    public void setModified(Date modified) {
-        this.modified = modified;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public Date getErrorTime() {
         return errorTime;
     }
@@ -321,51 +334,51 @@ public class SysUser extends BaseModel implements IDeleteListenable {
         this.errorTime = errorTime;
     }
 
-    public String getAvatar() {
-        return avatar;
+    public Date getModifiedTime() {
+        return modifiedTime;
     }
 
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
+    public void setModifiedTime(Date modifiedTime) {
+        this.modifiedTime = modifiedTime;
     }
 
-    public String getLoginConfirm() {
-        return loginConfirm;
+    public Date getCreatorTime() {
+        return creatorTime;
     }
 
-    public void setLoginConfirm(String loginConfirm) {
-        this.loginConfirm = loginConfirm;
+    public void setCreatorTime(Date creatorTime) {
+        this.creatorTime = creatorTime;
     }
 
-    public String getWechatNo() {
-        return wechatNo;
+    public String getStatus() {
+        return status;
     }
 
-    public void setWechatNo(String wechatNo) {
-        this.wechatNo = wechatNo;
+    public void setStatus(String status) {
+        this.status = status == null ? null : status.trim();
     }
 
-    public String getRtxNo() {
-        return rtxNo;
+    public String getShopId() {
+        return shopId;
     }
 
-    public void setRtxNo(String rtxNo) {
-        this.rtxNo = rtxNo;
+    public void setShopId(String shopId) {
+        this.shopId = shopId;
     }
 
-    public String getSupplyCompanyId() {
-        return supplyCompanyId;
+    public Integer getWorkYear() {
+        return workYear;
     }
 
-    public void setSupplyCompanyId(String supplyCompanyId) {
-        this.supplyCompanyId = supplyCompanyId;
+    public void setWorkYear(Integer workYear) {
+        this.workYear = workYear;
     }
 
-    public String getIsOutResourceUser() {
-        return isOutResourceUser;
+    public String getDescription() {
+        return description;
     }
 
-    public void setIsOutResourceUser(String isOutResourceUser) {
-        this.isOutResourceUser = isOutResourceUser;
+    public void setDescription(String description) {
+        this.description = description == null ? null : description.trim();
     }
 }
